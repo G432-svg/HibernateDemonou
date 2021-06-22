@@ -1,8 +1,11 @@
-import model.Villain;
+import model.Dog;
+import model.Human;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainClass {
@@ -11,19 +14,36 @@ public class MainClass {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pearlDatabase");
         EntityManager em = emf.createEntityManager();
 
-     //   Villain villain1 = new Villain("Ursula", "The Little Mermaid");
 
-        Villain villain2 = em.find(Villain.class,2 );
 
+
+
+
+
+
+        Human human = new Human("Tim");
+
+        Dog dog = new Dog("Fido",human);
+        Dog dog1 =new Dog("Lassie", human);
+        Dog dog2 =new Dog("Spot", human);
+
+        List<Dog> dogs = new ArrayList<>();
+        dogs.add(dog);
+        dogs.add(dog1);
+        dogs.add(dog2);
+        human.setDogs(dogs);
 
 
         em.getTransaction().begin();
-       // em.persist(villain1);
-        em.remove(villain2);
+
+        em.persist(human);
+
+
 
         em.getTransaction().commit();
 
-        System.out.println(villain2);
+        System.out.println(human);
+
 
 
     }
