@@ -48,7 +48,7 @@ public class Dog {
         return "Dog{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-
+                ", human=" + human +
                 '}';
     }
 }

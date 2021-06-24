@@ -10,7 +10,7 @@ public class Human {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-    @OneToMany(mappedBy = "human", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "human", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Dog> dogs;
 
 
@@ -50,7 +50,7 @@ public class Human {
         return "Human{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dogs=" + dogs +
+                //", dogs=" + dogs +
                 '}';
     }
 }
